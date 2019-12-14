@@ -4,6 +4,26 @@ document.addEventListener("DOMContentLoaded", async() => {
         let deckId = data.data.deck_id
         let cardsArr = []
         let oppCardsArr = []
+        let playDiv = document.createElement("div")
+        playDiv.id = "playAgain"
+
+        // audio
+        
+        let audio = document.createElement("audio")
+        audio.src = "http://23.237.126.42/ost/skullgirls-encore-expanded-soundtrack/pumjgmjs/35%20In%20a%20Moment%27s%20Time.mp3"
+        document.body.appendChild(audio)
+
+        const play = () => {
+            let audio = document.querySelector("audio")
+            audio.play()
+        }
+        let audioButton = document.createElement("button")
+        audioButton.id = "music"
+        audioButton.innerText = "Smooth Jazz here.. click me."
+        audioButton.addEventListener("click", () => {
+            play()
+        })
+        document.body.appendChild(audioButton)
 
         // rules
         // card values for both player and computer, established for checking later on
@@ -74,6 +94,7 @@ document.addEventListener("DOMContentLoaded", async() => {
                      card.value = 10
                     } else if (card.value === "ACE") {
                         let mess = window.prompt("You got an ACE! Choose a value: 1 or 11?", 11)
+                        card.value = mess
                     }
                  let div = document.querySelector("#playerHand")
                  let img = document.createElement("img")
@@ -130,6 +151,7 @@ document.addEventListener("DOMContentLoaded", async() => {
         let startGame = document.querySelector("#startGame")
         startGame.addEventListener("click", async() => {
             let data = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
+            // debugger
             let cards = data.data.cards
             cardsArr.push(...cards)
             cardsArr.forEach((card) => {
@@ -156,6 +178,48 @@ document.addEventListener("DOMContentLoaded", async() => {
 
             // debugger    
         })
+
+        const drawCards = async () => {
+            let data = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+            let card = data.data.cards
+            cardsArr.push(...card)
+            cardsArr.forEach((card) => {
+               //   debugger
+                if (card.value === "KING" || card.value === "JACK" || card.value === "QUEEN") {
+                    card.value = 10
+                   } else if (card.value === "ACE") {
+                       let mess = window.prompt("You got an ACE! Choose a value: 1 or 11?", 11)
+                   }
+                let div = document.querySelector("#playerHand")
+                let img = document.createElement("img")
+                img.src = card.image
+                div.appendChild(img)
+                playerCardValue += Number(card.value)
+                gameOver()
+
+               })
+            }
+            //play agin
+
+        let playAgain = document.createElement("button")
+        playAgain.innerText = "Clear!"
+        playAgain.id = "playTwice"
+        playAgain.addEventListener("click", () => {
+            let div1 = document.querySelector("#playerHand")
+            let div2 = document.querySelector("#computerHand")
+            let div3 = document.querySelector("#winnerInfo")
+            div1.innerHTML = ""
+            div2.innerHTML = ""
+            div3.innerHTML = ""
+            cardsArr = []
+            oppCardsArr = []
+            playerCardValue = 0
+            computerCardValue = 0
+        })
+        playDiv.appendChild(playAgain)
+        document.body.appendChild(playDiv)
+
+
     } catch (error) {
         debugger        
     }

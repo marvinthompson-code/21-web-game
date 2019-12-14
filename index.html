@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
     <title>21 Blackjack</title>
 </head>
 <body>
-    <h1>Simple 21</h1>
-    <div>
-        <button id="startGame" type="button">Start Game</button>
+    
+    <div id="container">
+        <div class="title">
+            <h1 id="titleCard">Simple 21</h1>
+        </div>
+        <div class="buttonStart">
+            <button id="startGame" type="button">Start Game</button>
+        </div>
+        <div class="buttonHit">
+            <button id="hit" type="button">HIT</button>
+        </div>
+    
+        <div class="buttonStay">
+            <button id="stay" type="button">STAY</button>
+        </div>
+        
+        <div class="left">
+            <div id="playerHand"></div>
+        </div>
+        <div class="right">
+            <div id="computerHand"></div>
+        </div>
+        <div class="middle">
+            <div id="winnerInfo"></div>
+        </div>
+
     </div>
-    <button id="hit" type="button">HIT</button>
-    <button id="stay" type="button">STAY</button>
-    <div id="playerHand"></div>
-    <div id="computerHand"></div>
-    <div id="winnerInfo"></div>
+    <!-- <img id="casino" src="http://www.casinosverige.nu/wp-content/uploads/2015/05/live-casino9.jpg" alt=""> -->
+
 </body>
 </html>

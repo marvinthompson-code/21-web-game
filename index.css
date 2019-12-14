@@ -1,0 +1,78 @@
+.playAgain#playTwice{
+    border-radius: 25px;
+    width: 150px;
+    margin-left: 45%;
+    margin-right: 45%;
+    background-color: black;  
+    color: red;
+    font-family: 'Avantegarde', serif;  
+}
+
+#music {
+    border-radius: 25px;
+    width: 150px;
+    margin-left: 45%;
+    margin-right: 45%;
+    background-color: black;  
+    color: red;
+    font-family: 'Avantegarde', serif;
+}
+.right {
+    padding-top: 25px;
+    float: right;
+}
+
+.left {
+    padding-top: 25px;
+    float: left;
+}
+
+.buttonHit #hit{
+    background-color: black;
+    color: white;
+    font-family: 'Avantegarde';
+    border-radius: 25px;
+    width: 150px;
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+.buttonStay #stay{
+    background-color: black;
+    color: white;
+    font-family: 'Avantegarde';
+    border-radius: 25px;
+    width: 150px;
+    margin-left: 45%;
+    margin-right: 45%;   
+}
+
+.buttonStart #startGame{
+    background-color: darkgreen;
+    color: white;
+    font-family: 'Avantegarde';
+    border-radius: 25px;
+    width: 150px;
+    margin-left: 45%;
+    margin-right: 45%; 
+}
+
+.title h1{
+    color: black;
+    font-family: 'Avantegarde', serif;
+    font-style: oblique;
+    font-size: x-large;
+    margin-left: 45%;
+    margin-right: 45%; 
+    padding-left: 25px;
+}
+
+.middleg{
+    margin-left: 45%;
+    margin-right: 45%; 
+    padding-left: 25px;
+    position: absolute;
+    justify-content: center;
+    bottom: 2;
+    font-size: small;
+}
