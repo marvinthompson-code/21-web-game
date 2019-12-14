@@ -1,3 +1,7 @@
+body {
+    background-color: gray;
+}
+
 .playAgain#playTwice{
     border-radius: 25px;
     width: 150px;
@@ -67,12 +71,15 @@
     padding-left: 25px;
 }
 
-.middleg{
+#playTwice {
     margin-left: 45%;
     margin-right: 45%; 
     padding-left: 25px;
-    position: absolute;
+    border-radius: 25px;
     justify-content: center;
-    bottom: 2;
+    bottom: 0;
     font-size: small;
+    background-color: black;
+    color: white;
+    font-family: 'Avantegarde';
 }
