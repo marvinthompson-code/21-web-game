@@ -1,5 +1,7 @@
 body {
-    background-color: gray;
+    background-color:forestgreen;
+    background-image: url("https://www.investors.com/wp-content/uploads/2017/04/MCRI-AUTO-040617-adobe.jpg");
+    background-size: cover;
 }
 
 .playAgain#playTwice{
@@ -9,7 +11,12 @@ body {
     margin-right: 45%;
     background-color: black;  
     color: red;
-    font-family: 'Avantegarde', serif;  
+    font-family: 'Avantegarde', serif;    
+}
+
+.playAgain#playTwice:hover {
+    background-color: red;
+    color: black;
 }
 
 #music {
@@ -20,6 +27,11 @@ body {
     background-color: black;  
     color: red;
     font-family: 'Avantegarde', serif;
+}
+#music:hover {
+    background-color: red;
+    color: black;
+
 }
 .right {
     padding-top: 25px;
@@ -62,13 +74,14 @@ body {
 }
 
 .title h1{
-    color: black;
+    color: white;
     font-family: 'Avantegarde', serif;
     font-style: oblique;
     font-size: x-large;
     margin-left: 45%;
     margin-right: 45%; 
     padding-left: 25px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #playTwice {
@@ -82,4 +95,19 @@ body {
     background-color: black;
     color: white;
     font-family: 'Avantegarde';
+    width: 150px;
+}
+
+#container .middle #winnerInfo {
+    color: white;
+}
+
+#container .left #playerHand {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#container .right #computerHand {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", async() => {
         let oppCardsArr = []
         let playDiv = document.createElement("div")
         playDiv.id = "playAgain"
-
-        // audio
         
         let audio = document.createElement("audio")
         audio.src = "http://23.237.126.42/ost/skullgirls-encore-expanded-soundtrack/pumjgmjs/35%20In%20a%20Moment%27s%20Time.mp3"
@@ -25,13 +23,10 @@ document.addEventListener("DOMContentLoaded", async() => {
         })
         document.body.appendChild(audioButton)
 
-        // rules
-        // card values for both player and computer, established for checking later on
-
         let playerCardValue = 0
         let computerCardValue = 0
 
-        // win or lose
+
         const stayGameOver = () => {
             if (playerCardValue > computerCardValue && playerCardValue <= 21) {
                 let h1 = document.createElement("h1")
@@ -74,8 +69,7 @@ document.addEventListener("DOMContentLoaded", async() => {
            }        
         }
 
-        
-        // HIT
+
         let hit = document.querySelector("#hit")
         hit.addEventListener("click", async() => {
             let div = document.querySelector("#playerHand")
@@ -111,7 +105,6 @@ document.addEventListener("DOMContentLoaded", async() => {
                 div2.appendChild(h2)
         }
 
-        //stay
 
         let stay = document.querySelector("#stay")
         stay.addEventListener("click", () => {
@@ -146,8 +139,6 @@ document.addEventListener("DOMContentLoaded", async() => {
                 div2.appendChild(h2)
         }
 
-        //start game
-
         let startGame = document.querySelector("#startGame")
         startGame.addEventListener("click", async() => {
             let data = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
@@ -155,13 +146,11 @@ document.addEventListener("DOMContentLoaded", async() => {
             let cards = data.data.cards
             cardsArr.push(...cards)
             cardsArr.forEach((card) => {
-                // debugger
                 if (card.value === "KING" || card.value === "JACK" || card.value === "QUEEN") {
                     card.value = 10
                 } else if (card.value === "ACE") {
                     card.value = 11
-                }
-                
+                }           
                 let img = document.createElement("img")
                 img.src = card.image
                 let div = document.querySelector("#playerHand")
@@ -174,13 +163,11 @@ document.addEventListener("DOMContentLoaded", async() => {
             let h2 = document.createElement("h2")
             h2.innerText = `Current Card Value: ${playerCardValue}`
             let div1 = document.querySelector("#playerHand")
-            div1.appendChild(h2)
-
-            // debugger    
+            div1.appendChild(h2)   
         })
 
         const drawCards = async () => {
-            let data = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+            let data = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
             let card = data.data.cards
             cardsArr.push(...card)
             cardsArr.forEach((card) => {
@@ -196,13 +183,16 @@ document.addEventListener("DOMContentLoaded", async() => {
                 div.appendChild(img)
                 playerCardValue += Number(card.value)
                 gameOver()
-
                })
+            let h2 = document.createElement("h2")
+            h2.innerText = `Current Card Value: ${playerCardValue}`
+            let div1 = document.querySelector("#playerHand")
+            div1.appendChild(h2)
             }
-            //play agin
+            
 
         let playAgain = document.createElement("button")
-        playAgain.innerText = "Clear!"
+        playAgain.innerText = "One more round?"
         playAgain.id = "playTwice"
         playAgain.addEventListener("click", () => {
             let div1 = document.querySelector("#playerHand")
@@ -215,6 +205,7 @@ document.addEventListener("DOMContentLoaded", async() => {
             oppCardsArr = []
             playerCardValue = 0
             computerCardValue = 0
+            drawCards()
         })
         playDiv.appendChild(playAgain)
         document.body.appendChild(playDiv)
