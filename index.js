@@ -10,11 +10,14 @@ document.addEventListener("DOMContentLoaded", async() => {
         let audio = document.createElement("audio")
         audio.src = "http://23.237.126.42/ost/skullgirls-encore-expanded-soundtrack/pumjgmjs/35%20In%20a%20Moment%27s%20Time.mp3"
         document.body.appendChild(audio)
+        
 
         const play = () => {
             let audio = document.querySelector("audio")
             audio.play()
         }
+
+
         let audioButton = document.createElement("button")
         audioButton.id = "music"
         audioButton.innerText = "Smooth Jazz here.. click me."
@@ -33,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async() => {
                 let div = document.querySelector("#winnerInfo")
                 div.innerHTML = ""
                 h1.innerHTML = "YOU WIN"
+               
                 div.appendChild(h1)   
             } else if (computerCardValue > playerCardValue && computerCardValue <=21) {
                 let h1 = document.createElement("h1")
@@ -165,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async() => {
             let div1 = document.querySelector("#playerHand")
             div1.appendChild(h2)   
         })
-
+        
         const drawCards = async () => {
             let data = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
             let card = data.data.cards
@@ -175,7 +179,8 @@ document.addEventListener("DOMContentLoaded", async() => {
                 if (card.value === "KING" || card.value === "JACK" || card.value === "QUEEN") {
                     card.value = 10
                    } else if (card.value === "ACE") {
-                       let mess = window.prompt("You got an ACE! Choose a value: 1 or 11?", 11)
+                    let mess = window.prompt("You got an ACE! Choose a value: 1 or 11?", 11)
+                    card.value = mess
                    }
                 let div = document.querySelector("#playerHand")
                 let img = document.createElement("img")
